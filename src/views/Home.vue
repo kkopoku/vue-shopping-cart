@@ -1,13 +1,13 @@
 <template>
     <div class="flex flex-col min-h-screen bg-gray-900 px-20">
         <div class="container mx-auto p-4">
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-12">Product List</h1>
+            <h1 class="text-3xl font-bold text-white mb-12">Product List</h1>
             <div class="max-h-[35rem] overflow-y-auto custom-scrollbar">
                 <div v-for="product in sortedProducts" :key="product.name"
                     class="flex items-center justify-between p-4 rounded-md">
                     <div>
-                        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{{ product.name }}</h2>
-                        <p class="text-sm text-gray-700 dark:text-gray-300">{{ product.description }}</p>
+                        <h2 class="text-lg font-semibold text-white">{{ product.name }}</h2>
+                        <p class="text-sm text-gray-300">{{ product.description }}</p>
                     </div>
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
                         @click="openPopup(product)">View</button>
