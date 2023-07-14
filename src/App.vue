@@ -12,4 +12,5 @@ export default {
 
 <style>
 /* Add global styles here if needed */
+@import './style.css'
 </style>
