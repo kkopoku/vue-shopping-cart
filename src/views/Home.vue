@@ -65,20 +65,14 @@ export default {
     computed: {
         sortedProducts() {
             return this.products.sort((a, b) => {
-                const nameA = a.name.toLowerCase();
-                const nameB = b.name.toLowerCase();
-
-                if (nameA < nameB) {
-                    return -1; // a should come before b
-                }
-                if (nameA > nameB) {
-                    return 1; // a should come after b
-                }
-                return 0; // a and b are equal in terms of sorting
+                return a.name.localeCompare(b.name);
             });
         },
     }
 };
+
+document.title = 'Product-Details'
+
 </script>
 
 <style>
