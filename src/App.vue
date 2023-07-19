@@ -12,5 +12,6 @@ export default {
 
 <style>
 /* Add global styles here if needed */
-@import './style.css'
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+/* @import './style.css' */
 </style>
