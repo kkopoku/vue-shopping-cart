@@ -86,7 +86,16 @@ export default {
             products: [
                 { name: 'Samsung 50" TV', description: 'Samsung 50" TV description', quantity: 10, CP: '100 USD', SP: '120USD' },
                 { name: 'iPhone XR', description: 'iPhone XR Description', quantity: 5, CP: '100 USD', SP: '120USD' },
-                // ...
+                { name: 'iPhone 11', description: 'Product 3 description', quantity: 8, CP: '100 USD', SP: '120USD' },
+                { name: 'iPhone 14', description: 'Product 1 description', quantity: 13, CP: '100 USD', SP: '120USD' },
+                { name: 'iPhone XR', description: 'Product 2 description', quantity: 51, CP: '100 USD', SP: '120USD' },
+                { name: 'iPhone 12 Pro Max', description: 'Product 3 description', quantity: 833, CP: '100 USD', SP: '120USD' },
+                { name: 'MacBook Pro 2018', description: 'Product 1 description', quantity: 0, CP: '100 USD', SP: '120USD' },
+                { name: 'HP Desktop 24"', description: 'Product 2 description', quantity: 25, CP: '100 USD', SP: '120USD' },
+                { name: 'Samsung Home Theatre Speaker', description: 'Product 3 description', quantity: 84, CP: '100 USD', SP: '120USD' },
+                { name: 'Nasco Headphones', description: 'Product 1 description', quantity: 31, CP: '100 USD', SP: '120USD' },
+                { name: 'Airpods Max', description: 'Product 2 description', quantity: 51, CP: '100 USD', SP: '120USD' },
+                { name: '1 TB HDD', description: 'Product 3 description', quantity: 87, CP: '100 USD', SP: '120USD' },
             ],
             selectedProduct: {},
             showHistory: false,
