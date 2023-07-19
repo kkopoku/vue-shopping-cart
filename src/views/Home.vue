@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col min-h-screen bg-gray-900 px-20">
-        <div class="container mx-auto p-4">
+        <div class="container mx-auto pt-10">
             <h1 class="text-3xl font-bold text-white mb-12">Product List</h1>
             <div class="max-h-[35rem] overflow-y-auto custom-scrollbar">
                 <div v-for="product in sortedProducts" :key="product.name"
@@ -10,23 +10,76 @@
                         <p class="text-sm text-gray-300">{{ product.description }}</p>
                     </div>
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
-                        @click="openPopup(product)">View</button>
+                        @click="openPopup(product)">View
+                    </button>
                 </div>
             </div>
         </div>
         <div v-if="showHistory" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-            <div class="bg-gray-900 bg-opacity-60 p-6 w-96 h-96 rounded-md">
-                <h2 class="text-lg font-semibold mb-2 text-white">Product History</h2>
-                <div class="flex flex-row">
-                    <div class="basis-1/2">
-                        <p class="text-gray-300">Current quantity: {{ selectedProduct.quantity }}</p>
+            <div class="bg-gray-900 bg-opacity-60 p-6 w-96 rounded-md h-fit transition">
+                <h2 class="text-lg font-semibold mb-5 text-white">Product History</h2>
+
+                <div class="flex flex-col">
+
+                    <div v-if="!editing" class="flex mt-2">
+                        <p class="text-gray-300">Product: {{ selectedProduct.name }}</p>
                     </div>
-                    <div class="basis-1/2">
-                        <p class="text-gray-300">Current Price: {{ selectedProduct.CP }}</p>
+                    <div v-else class="flex flex-col mt-5">
+                        <label class="text-gray-300 text-xs mb-1">Product:</label>
+                        <input type="text" class="bg-gray-800 text-white rounded-md p-2" v-model="selectedProduct.name">
+                    </div>
+
+                    <div v-if="!editing" class="flex mt-2">
+                        <p class="text-gray-300">Description: {{ selectedProduct.description }}</p>
+                    </div>
+                    <div v-else class="flex flex-col mt-5">
+                        <label class="text-gray-300 text-xs mb-1">Description:</label>
+                        <input type="text" class="bg-gray-800 text-white rounded-md p-2"
+                            v-model="selectedProduct.description">
                     </div>
                 </div>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mt-4"
-                    @click="showHistory = false">Close</button>
+
+                <div class="flex flex-col mt-2 gap-2">
+                    <div v-if="!editing" class="basis-1/2">
+                        <p class="text-gray-300">Current quantity: {{ selectedProduct.quantity }}</p>
+                    </div>
+                    <div v-else class="flex flex-col mt-5">
+                        <label class="text-gray-300 text-xs mb-1">New quantity:</label>
+                        <input type="number" class="bg-gray-800 text-white rounded-md p-2"
+                            v-model="selectedProduct.quantity">
+                    </div>
+
+                    <div v-if="!editing" class="basis-1/2">
+                        <p class="text-gray-300">Current Price: {{ selectedProduct.CP }}</p>
+                    </div>
+                    <div v-else class="flex flex-col mt-5">
+                        <label class="text-gray-300 text-xs mb-1">New Price:</label>
+                        <input type="text" class="bg-gray-800 text-white rounded-md p-2" v-model="selectedProduct.CP">
+                    </div>
+                </div>
+
+                <div class="flex flex-row gap-3 justify-end mt-5">
+                    <div v-if="editing">
+                        <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded mt-4"
+                            @click="() => {
+                                editing = false;
+                            }">Submit
+                        </button>
+                    </div>
+                    <div v-else>
+                        <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded mt-4"
+                            @click="() => {
+                                editing = true;
+                            }">Edit
+                        </button>
+                    </div>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mt-4" @click="() => {
+                        editing = false;
+                        showHistory = false
+                    }">Close
+                    </button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -54,6 +107,7 @@ export default {
             ],
             selectedProduct: {},
             showHistory: false,
+            editing: false,
         };
     },
     methods: {
